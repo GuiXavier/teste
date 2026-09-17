@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>IPTV</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/tv.css">
+</head>
+<body>
+
+<div id="app">
+
+  <div class="navbar">
+    <div class="nav-brand">
+      <div class="nav-logo">&#9654;</div>
+      <div class="nav-title">iptv<b>-tv</b></div>
+      <span id="navVersion" class="nav-version">v0</span>
+    </div>
+    <div class="nav-menu" id="navMenu"></div>
+    <div class="nav-state">
+      <div id="status" class="nav-status"><span class="dot"></span>iniciando</div>
+      <div id="device">detectando aparelho...</div>
+    </div>
+  </div>
+
+  <div class="pages">
+
+    <div id="page-home" class="page">
+      <div class="home" id="home"></div>
+    </div>
+
+    <div id="page-live" class="page">
+      <div class="cat-strip" id="cats-live"></div>
+      <div class="live-body">
+        <div class="live-side">
+          <div class="channels" id="channels"></div>
+        </div>
+        <div class="live-main">
+          <div class="stage-slot" id="stageSlot"></div>
+          <div class="now">
+            <div class="now-title" id="nowTitle">nenhum canal</div>
+            <div class="now-meta" id="nowMeta"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="page-vod" class="page">
+      <div class="cat-strip" id="cats-vod"></div>
+      <div class="grid" id="grid-vod"></div>
+    </div>
+
+    <div id="page-series" class="page">
+      <div class="cat-strip" id="cats-series"></div>
+      <div class="grid" id="grid-series"></div>
+    </div>
+
+    <div id="page-search" class="page">
+      <div class="search-head">
+        <label class="search-label" for="searchInput">Buscar</label>
+        <input id="searchInput" class="search-input" type="text" autocomplete="off"
+               placeholder="canal, filme ou serie">
+        <span class="search-hint">OK abre o teclado da TV &middot; VOLTAR sai do campo</span>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <div id="page-detail" class="page">
+      <div class="detail" id="detail"></div>
+    </div>
+
+  </div>
+
+  <div class="keybar" id="keybar"></div>
+
+</div>
+
+<div id="stage" class="stage is-off">
+  <video id="video" playsinline></video>
+  <div id="overlay" class="stage-overlay"></div>
+  <div id="watchBar" class="watch-bar hidden">
+    <div class="watch-title" id="watchTitle"></div>
+    <div class="watch-sub" id="watchSub"></div>
+    <div class="watch-seek hidden" id="watchSeek"><i></i></div>
+    <div class="watch-times">
+      <span id="watchElapsed"></span>
+      <span id="watchTotal"></span>
+    </div>
+    <div class="watch-controls" id="watchControls"></div>
+  </div>
+  <div id="nextEp" class="next-ep hidden" role="region" aria-label="Proximo episodio">
+    <div class="next-ep-label">A seguir</div>
+    <div class="next-ep-title" id="nextEpTitle"></div>
+    <button class="next-ep-go" id="nextEpGo">OK &middot; assistir o proximo</button>
+    <div class="next-ep-hint" id="nextEpHint">VOLTAR fica neste episodio</div>
+  </div>
+</div>
+
+<div id="resumeChoice" class="resume-choice hidden" role="dialog" aria-label="Retomar reproducao" aria-modal="true"></div>
+
+<script src="hls.min.js"></script>
+<script src="js/build-info.js"></script>
+<script src="js/platform/keys.js"></script>
+<script src="js/platform/Log.js"></script>
+<script src="js/platform/luna.js"></script>
+<script src="js/platform/store.js"></script>
+<script src="js/platform/db.js"></script>
+<script src="js/platform/Library.js"></script>
+<script src="js/platform/Shelf.js"></script>
+<script src="js/player/Resume.js"></script>
+<script src="js/platform/Diagnostics.js"></script>
+<script src="js/platform/sync.js"></script>
+<script src="js/player/Player.js"></script>
+<script src="js/player/HealthMonitor.js"></script>
+<script src="js/player/Controls.js"></script>
+<script src="js/player/UpNext.js"></script>
+<script src="js/nav/Spatial.js"></script>
+<script src="js/ui/Card.js"></script>
+<script src="js/ui/ChannelList.js"></script>
+<script src="js/ui/Rail.js"></script>
+<script src="js/ui/PosterGrid.js"></script>
+<script src="js/ui/Home.js"></script>
+<script src="js/ui/Search.js"></script>
+<script src="js/ui/Detail.js"></script>
+<script src="js/ui/Setup.js"></script>
+<script src="js/ui/Settings.js"></script>
+<script src="js/api.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

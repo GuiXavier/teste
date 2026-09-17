@@ -1,0 +1,8 @@
+tests/node_modules/
+tests/cache-test-*/
+tests/*.tmp
+.artifacts/
+
+# Ferramentas locais de empacotamento e cache npm
+.tools/
+.cache/

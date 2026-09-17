@@ -1,0 +1,85 @@
+{
+  "node": "v24.20.0",
+  "exitCode": 0,
+  "tests": 35,
+  "passed": 35,
+  "failed": 0,
+  "testFiles": [
+    "tests/backend-integrity.test.cjs",
+    "tests/catalog-integrity.test.cjs",
+    "tests/compatibility.test.cjs",
+    "tests/transport-integrity.test.cjs"
+  ],
+  "changedOriginalFiles": [
+    {
+      "path": "app/appinfo.json",
+      "before": "6d5983e6e6a821aa4281789fbed2f7e4c02cea355fd770d71c6533e2aa928f47",
+      "after": "3f5f7ee9c78c61531e0dddbadc4096cf847236a0df188167a417325ccc26abe1"
+    },
+    {
+      "path": "app/js/api.js",
+      "before": "c4210c0fb782bbd178840c1caf84f40b73ce2266ff5974702b65ff0d4409d958",
+      "after": "dc1a8ce47148614c3f6057f5b19d27b09dc2e426009d46281d618f718bd95626"
+    },
+    {
+      "path": "app/js/app.js",
+      "before": "55b7e93d9b905b88a4fd2cd3c6417ee561656a5d79493dc53398cfde49eaefe8",
+      "after": "ec6f284131786e21b67a46a3bbbb7492a09e352e63575a10b0420b461d31431f"
+    },
+    {
+      "path": "app/js/catalog.js",
+      "before": "7778dd91e40d642f0a8026e66932eac5ef5c7f5c8899b99b42ec508db571f9e0",
+      "after": "63d8cd261b4e07c64b94bef908591d4139c9e851c85c00755ad80d328b4351cd"
+    },
+    {
+      "path": "app/js/platform/db.js",
+      "before": "ca80c8db0d654b07f65f2db79783902d1fd37b0a9caf5b227d372788e2b73ac2",
+      "after": "346a512bf621c98e221818b1e82d7d8a9963506db6feec8d7dd0f22bdcb16150"
+    },
+    {
+      "path": "app/js/platform/sync.js",
+      "before": "29bb4c073536dc8b7b528e6a030d0d73e3530efe06ce49a339fe0821a84bad6c",
+      "after": "9b838d2043cb936268449f38473c5c33297d891ae7b06549c7d682bbbb05de6c"
+    },
+    {
+      "path": "server/lib/playlist.js",
+      "before": "9e1d9d902c3ab07f4c964b32b8a92dc6d562a6228aa8a6d11029e78f71a341fb",
+      "after": "e184f7b5fe97079469c5112f156c6953db1734420a82e04f36a2b8d7727c9874"
+    },
+    {
+      "path": "server/lib/sources.js",
+      "before": "fc34d5b8ee72ad8c722c72da116eda58c3875eeda5a1c00ad9747e2f53f91fdb",
+      "after": "22e7187489f851bb19817b50f1fdcca36aecce901e412ec3fd82a42c32191319"
+    },
+    {
+      "path": "server/lib/sourceStore.js",
+      "before": "7138e336856536bded9ad62cf07a9b4d6cae5156d592115e8822b2c4ffb932fe",
+      "after": "5f3c23bab360d79403edc3908b2a63c501ca3a42bfdaae143e8f16ca8ea2b0d3"
+    },
+    {
+      "path": "server/server.js",
+      "before": "61be0b802a8bc2ebb37803d9a3c32eeb763c5bb3213e52e14cbfed2b198e73a1",
+      "after": "c9408dc78ff0464f1f1cfa36fe6efaa363e8c90a67a3fc737b9ba6b5052016f1"
+    },
+    {
+      "path": "services/lib/playlist.js",
+      "before": "e2ca658640b49012dfc0d0d21115602c3ebb3a088ec1375ed179cd4006dab3fd",
+      "after": "e184f7b5fe97079469c5112f156c6953db1734420a82e04f36a2b8d7727c9874"
+    },
+    {
+      "path": "services/lib/sources.js",
+      "before": "fc34d5b8ee72ad8c722c72da116eda58c3875eeda5a1c00ad9747e2f53f91fdb",
+      "after": "22e7187489f851bb19817b50f1fdcca36aecce901e412ec3fd82a42c32191319"
+    },
+    {
+      "path": "services/package.json",
+      "before": "535c9abd106abc352258a12711b04f7900bfa4b0e2ec50c47940327f6146e4f7",
+      "after": "1a46228908ae1c798f5e3a196915e5d66b5dc3f2499577b97307f15d35e56b37"
+    },
+    {
+      "path": "services/service.js",
+      "before": "c60aca3f39018029ca05ffb8d19a18fe5b9fb01e0f767cf954c45c22b8a9f3b2",
+      "after": "80b4c6d1b5ac23ace25c71d8482dcea2c70a75594e50cb5b07ba7aae1edf5bf2"
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "generatedAt": "2026-09-12T22:51:43.940Z",
+  "node": "v24.20.0",
+  "appVersion": "0.1.3",
+  "build": "0.1.3-00aa97c3a0ff",
+  "exitCode": 0,
+  "tests": 66,
+  "passed": 66,
+  "failed": 0,
+  "staticFiles": 47,
+  "testFiles": [
+    "tests/backend-integrity.test.cjs",
+    "tests/catalog-integrity.test.cjs",
+    "tests/compatibility.test.cjs",
+    "tests/interface-diagnostics.test.cjs",
+    "tests/playback-autonomy.test.cjs",
+    "tests/transport-integrity.test.cjs"
+  ],
+  "changedSincePriority2": [
+    {
+      "path": "app/appinfo.json",
+      "before": "bc29b5a3d0e5c553e12761eb2157f0478ea1ed051ee3b73954fa8af788a8f2d4",
+      "after": "43742d77ac0ea0ea177904922e2a5588944bbcb937e8526b88b7483699e30974"
+    },
+    {
+      "path": "app/css/tv.css",
+      "before": "5102c064ad7683b1f720e0db7acebb0eff5cb27ea35f6aad1c9c057fd4ed7712",
+      "after": "ae22dee8829340f6c6a983d8c3e06501c90b2c4ca50c603d3e96a469c5f5f558"
+    },
+    {
+      "path": "app/index.html",
+      "before": "2404bcb944f68eeb15205e063dfd739e3c9f15473a0bdc363da1f2beb6a5d1dd",
+      "after": "f3c5c38ff6cc58e9f3d6c84c01ca8089cb194ab6a7432669c54058d095284866"
+    },
+    {
+      "path": "app/js/app.js",
+      "before": "94705888207cb24087d196b4ad70f473a0cac0eb34de5262dae846e96d0379a9",
+      "after": "9d19f61d0420c4b5251e14c481c52dbc00cf9eaee282e966e23b2604d5488722"
+    },
+    {
+      "path": "app/js/catalog.js",
+      "before": "3cae1615b137854ff1008b15865052e45763f99c35746d337ed05544fbd08281",
+      "after": "35216be29e945c3615f64608b6413db918fda878b679b29018d83a39a83fa332"
+    },
+    {
+      "path": "app/js/platform/db.js",
+      "before": "9466e6faaebc902d0e888908d6b18bb3bf8afaf0c38e671305a071ad51e4d67b",
+      "after": "8254fa9421a7d3aef83c5b433a05df3b373601d422779296c4eff1dcdde2df09"
+    },
+    {
+      "path": "app/js/platform/Log.js",
+      "before": "c7e51b2ab25f09b9aff640f76a1c1f4b419e57438b4663be96d44d615b24062d",
+      "after": "1cb19dddab58c79e0ab747763cc7b76a47733e15358db924bb996a62b0000d51"
+    },
+    {
+      "path": "app/js/player/Player.js",
+      "before": "b3cc76e4a4eea8b25dd0c1b4e710d4b96a96a83417208e0d28bcf4c08e35abca",
+      "after": "6d3b1321e3883f931e2f41497c1c5cacf7897b08e50c06609ec6f407025d91c1"
+    },
+    {
+      "path": "app/js/ui/ChannelList.js",
+      "before": "c84ce897fb16e5efee05d2110ab025e97ef0c21ec10c582cf2c460c1a93f7147",
+      "after": "b197f090d8c9e7424de28e3815d521f1190460e12b7da8173497ba01935f4760"
+    },
+    {
+      "path": "app/js/ui/Settings.js",
+      "before": "47b75aacddac878fbf94cca81376636f9069b11df4ea9010469c99fb17bde1ed",
+      "after": "bbbf0d0dd8fabf0de7c4619298d816bf23fe5b984cccc880f20f5547e607f68e"
+    },
+    {
+      "path": "auditar.ps1",
+      "before": "205ad978238d176801b677697cf769e634e1a8c8219d880cddd08db11b956576",
+      "after": "70e10ee7c83f500ba510341eb2afbfa2b401551db5fbef010019a533fde03b9e"
+    },
+    {
+      "path": "build.ps1",
+      "before": "af7ad6084325ca3d4a08b1a305a524ffa84cb5ea05fe745ac77d3adf22c4b849",
+      "after": "7c932af1508f4961e74dce49fd5a202078417391d31dea1f0a1d66f9464c8ca9"
+    },
+    {
+      "path": "server/lib/validator.js",
+      "before": "8fa89f2d39d3c1898e71bce50d688615abca80d0066df99d7cb49b942d068d40",
+      "after": "1683c52ea0b54dbb7cdd866c4ff925451e3d428125c0563aba572dc55dbb949f"
+    },
+    {
+      "path": "server/server.js",
+      "before": "09e4b83fb248597a86f3fd3f63381934fe2daf53afc730992818994b901319dd",
+      "after": "cebe9bb177a396731770a62e85befad84a4f9ef621a6e13a801a8d8c37ccaf56"
+    },
+    {
+      "path": "services/package.json",
+      "before": "7b91c308b47294cd0d51e4eee9952ce520a0f46797166022344c400cfb84bcab",
+      "after": "27a83231921f6fb1aae7e4f1e4a179b1596d369cf5728b299641577d2a1661f5"
+    },
+    {
+      "path": "tests/playback-autonomy.test.cjs",
+      "before": "945c10f810de5f6aa1ccbe38da3ad4fe53460a87c6e4e8f6486edb2f59ddc202",
+      "after": "738b0f0e61559d06fad37563fb8526685c7fb602e3a98bce4e347ebb16ff9a87"
+    },
+    {
+      "path": "README.md",
+      "before": "a7e8d1654987d50b9473c6d2e890bac83c3e8a7b994f589524da30ffe192d259",
+      "after": "581c374c231a6bf8876a9e96912b3e55434fd533c5a5b9c6e24b9af89ac1bd5c"
+    }
+  ],
+  "newRuntimeFiles": [
+    {
+      "path": "app/js/platform/Diagnostics.js",
+      "sha256": "fc23225417c6838d9c2bbd2b8c9fe698bd57218fe160b510a67542b7743cd589"
+    },
+    {
+      "path": "scripts/native-tools.ps1",
+      "sha256": "681a0a924d750f82d766d8f27d329051a2b6bb561194d3c6bfa0f189faa407de"
+    },
+    {
+      "path": "scripts/verify-project.cjs",
+      "sha256": "e5e84f661c31e710298f83275ed6df26bb6005e446357abf6559ffa82bc97a76"
+    },
+    {
+      "path": "server/lib/playbackHistory.js",
+      "sha256": "da9948423de35428d35e26f4a26d95e94985f68c5728f605338767f36d43e1e6"
+    }
+  ],
+  "evidence": {
+    "tests": "Fixtures, IndexedDB e transportes simulados; scripts PowerShell executados em modo de verificacao/teste",
+    "ui": "Previa local 1920x1080: cadastro vazio e navegacao de rascunho conferidos no navegador",
+    "tv": false,
+    "providerAccess": false,
+    "packageGenerated": false
+  },
+  "finalChecks": {
+    "buildCheckOnly": {
+      "exitCode": 0,
+      "build": "0.1.3-00aa97c3a0ff"
+    },
+    "audit": {
+      "exitCode": 0,
+      "build": "0.1.3-00aa97c3a0ff"
+    },
+    "documentation": {
+      "brokenLocalLinks": 0
+    }
+  }
+}

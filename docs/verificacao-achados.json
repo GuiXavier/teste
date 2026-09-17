@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Sincronização aceita página curta como carga completa",
+    "reproduced": true,
+    "actual": {
+      "pruned": true,
+      "kept": 2,
+      "reported": {
+        "error": null,
+        "report": {
+          "fonte": "mock",
+          "origem": "TV",
+          "live": 2,
+          "podados": 0,
+          "vodCats": 0,
+          "seriesCats": 0,
+          "erros": [],
+          "ms": 0
+        }
+      }
+    },
+    "expected": "Não podar: 2 recebidos de 1000 anunciados."
+  },
+  {
+    "name": "Contagem de poda usa primeiro argumento do callback (erro)",
+    "reproduced": true,
+    "actual": 0,
+    "expected": 8
+  },
+  {
+    "name": "Parser EXTINF com vírgula em atributo",
+    "reproduced": true,
+    "actual": {
+      "name": "Um\" group-title=\"Noticias\",Titulo",
+      "category": "Sem categoria"
+    },
+    "expected": {
+      "name": "Canal, Um",
+      "category": "Noticias"
+    }
+  },
+  {
+    "name": "Parser preserva atributos e categorias simples",
+    "passed": true
+  },
+  {
+    "name": "Proxy reescreve segmentos, chaves, mapas e cabeçalhos",
+    "passed": true
+  }
+]

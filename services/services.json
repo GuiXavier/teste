@@ -1,0 +1,10 @@
+{
+  "id": "com.iptv.tvapp.service",
+  "description": "Backend embutido do app IPTV",
+  "services": [
+    {
+      "name": "com.iptv.tvapp.service",
+      "description": "Busca playlists e API Xtream de dentro da TV, sem CORS"
+    }
+  ]
+}

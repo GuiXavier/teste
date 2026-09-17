@@ -1,0 +1,9 @@
+{
+  "name": "iptv-tv-server",
+  "version": "0.1.0",
+  "description": "Backend do app IPTV para LG webOS: playlist, validacao, proxy CORS e logos",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "license": "GPL-3.0-only",
+  "engines": { "node": ">=18" }
+}

@@ -1,0 +1,244 @@
+{
+  "version": 1,
+  "appVersion": "0.1.8",
+  "id": "0.1.8-6985664c9878",
+  "sha256": "6985664c98787ebcd7dd0c610bc572c1ff6f5e88038d96a599a5f291515e4de5",
+  "files": [
+    {
+      "path": "app/appinfo.json",
+      "sha256": "b7c86a0cb5e7bff7cab4d86d37ef531082c11309577ae52311c4edeab77316a2"
+    },
+    {
+      "path": "app/css/tokens.css",
+      "sha256": "04b34d05e1405baed67accf7c17af473fce49943deceb60c262cd541c22bc0f2"
+    },
+    {
+      "path": "app/css/tv.css",
+      "sha256": "d59a85556be1bc29d0e5b4bf66e47a18349f2c272fde23af8e29a2c74a962ebd"
+    },
+    {
+      "path": "app/hls.min.js",
+      "sha256": "a78b3603d762428caba2ef21674e4d47fbc4e7496292b28f845ba7372849360b"
+    },
+    {
+      "path": "app/icon.png",
+      "sha256": "cd5462ce8c108500300cb1c384955a03a2891c65b86b2b62641acded2cbf609a"
+    },
+    {
+      "path": "app/index.html",
+      "sha256": "c5d91bcbb40277247635a806d6495dfa7ad6fe24110ac6a3e745c1c4f7f6f7b0"
+    },
+    {
+      "path": "app/js/api.js",
+      "sha256": "d92b4d7993957b9a651375942def08b26de8b87379793ba58f0524ceffcf3a0f"
+    },
+    {
+      "path": "app/js/app.js",
+      "sha256": "0ea9980e8d979be30d0cbc057248ef7193105c05bd85366b3c2661a456595c9c"
+    },
+    {
+      "path": "app/js/catalog.js",
+      "sha256": "b76d500a2e2a101c9a2ec4e50baf727987534838ac56ea3f1f3d08c365462283"
+    },
+    {
+      "path": "app/js/nav/Spatial.js",
+      "sha256": "ca8f76be5acae4d4527d671a97b1051d417a0eeed6b50c840807b5917782529f"
+    },
+    {
+      "path": "app/js/platform/Diagnostics.js",
+      "sha256": "fc23225417c6838d9c2bbd2b8c9fe698bd57218fe160b510a67542b7743cd589"
+    },
+    {
+      "path": "app/js/platform/Library.js",
+      "sha256": "2128ad376e3dc4ef8f160e67b73844f48bdcdf0c82b38ec8966e9daf4d50dbab"
+    },
+    {
+      "path": "app/js/platform/Log.js",
+      "sha256": "df22aefd7efba85730ad52878c889a278c056b93f313508b497ccc6d2b36d5b5"
+    },
+    {
+      "path": "app/js/platform/Shelf.js",
+      "sha256": "5266f1e0d5ec9b779c60aace7b46ec38c176a91010e9677b1e4fbd946f67be08"
+    },
+    {
+      "path": "app/js/platform/db.js",
+      "sha256": "6cbbe587a39a7e4890292087b4fd895c1693df54cc0dfdde7c72f987ca56f314"
+    },
+    {
+      "path": "app/js/platform/keys.js",
+      "sha256": "49c7048b935727a29110a67ddf13636d53a4b19be1bd54427dfb6b32f6358d99"
+    },
+    {
+      "path": "app/js/platform/luna.js",
+      "sha256": "eb76a64d83b697e9da0ce02cf61969251124f4c42205e6a637649198752806c0"
+    },
+    {
+      "path": "app/js/platform/store.js",
+      "sha256": "5b39414bb8446e210704cf4ea33d3d2e1cfce62c5b2608daee938f4a96f69ba2"
+    },
+    {
+      "path": "app/js/platform/sync.js",
+      "sha256": "52a576ad1d71e4fc80b41e7ff6e8192cf624f83b8a3db8db8b09e9bbaa962687"
+    },
+    {
+      "path": "app/js/player/Controls.js",
+      "sha256": "d53771cd4e107c6593c4e6328226e44f07c1617823ab09b5cc4f283cbbfe9028"
+    },
+    {
+      "path": "app/js/player/HealthMonitor.js",
+      "sha256": "595695a80849aa72be38f7d5d910d64575df6147e5105b53ef493573aedba504"
+    },
+    {
+      "path": "app/js/player/Player.js",
+      "sha256": "6d3b1321e3883f931e2f41497c1c5cacf7897b08e50c06609ec6f407025d91c1"
+    },
+    {
+      "path": "app/js/player/Resume.js",
+      "sha256": "819415ef09fb9d55433310f6aaac2ff01e9a6ea8bb7f2304f575fca35ae2a1c0"
+    },
+    {
+      "path": "app/js/player/UpNext.js",
+      "sha256": "506d5a95e1de7b2eac109a17a073ebe3f4405d1d1d37600f5dbfc2f33fb9301a"
+    },
+    {
+      "path": "app/js/ui/Card.js",
+      "sha256": "f795e271621cd70a3e87cb038f846cbb32c70bdcf3560c127afa00718e153b67"
+    },
+    {
+      "path": "app/js/ui/ChannelList.js",
+      "sha256": "06bf80748150f4f337094d05331d268660bde6fc72945b4b0560ecd69029e1e4"
+    },
+    {
+      "path": "app/js/ui/Detail.js",
+      "sha256": "67a3795985b2eb05ea8fd039bd502798e4e83a64ee1fd39af2a7faf5a168bc79"
+    },
+    {
+      "path": "app/js/ui/Home.js",
+      "sha256": "aa437195edd39ef19d4f4847348e55b4003dfd435d426094e5abe409f0d9a9be"
+    },
+    {
+      "path": "app/js/ui/PosterGrid.js",
+      "sha256": "fa490dca195472374e202a57921d7a035cf9aca9565b73c8074dcc4ce1695b28"
+    },
+    {
+      "path": "app/js/ui/Rail.js",
+      "sha256": "a4b672f68c4cee792345292bfb876cf8c971293623252bdccb45aeb6cf4b7eaf"
+    },
+    {
+      "path": "app/js/ui/Search.js",
+      "sha256": "1cb93d7040add45b5388c15893d92bcdb02cdb8826f91138900673dd678b8659"
+    },
+    {
+      "path": "app/js/ui/Settings.js",
+      "sha256": "415cd4e652f8e38b8df13db98fa27c5c2007dafd0ab0883b59e9878bf575af68"
+    },
+    {
+      "path": "app/js/ui/Setup.js",
+      "sha256": "8a455b6bbbf9ca6ab1a83cd9a20af42a0cb4c0daa78aaff22c846073e879e834"
+    },
+    {
+      "path": "app/largeIcon.png",
+      "sha256": "1bc5c19e926c3fce239595728d5baa1948de4737c1a0a3ccb2c19891fb847d04"
+    },
+    {
+      "path": "auditar.ps1",
+      "sha256": "70e10ee7c83f500ba510341eb2afbfa2b401551db5fbef010019a533fde03b9e"
+    },
+    {
+      "path": "build.ps1",
+      "sha256": "7c932af1508f4961e74dce49fd5a202078417391d31dea1f0a1d66f9464c8ca9"
+    },
+    {
+      "path": "corrigir.ps1",
+      "sha256": "677375e3feeb910e422e14f3c2b51caad0e470826d2f95321a717e0dc9e9d91d"
+    },
+    {
+      "path": "scripts/native-tools.ps1",
+      "sha256": "681a0a924d750f82d766d8f27d329051a2b6bb561194d3c6bfa0f189faa407de"
+    },
+    {
+      "path": "scripts/verify-project.cjs",
+      "sha256": "e5e84f661c31e710298f83275ed6df26bb6005e446357abf6559ffa82bc97a76"
+    },
+    {
+      "path": "server/lib/config.js",
+      "sha256": "23ce5a96de15abb020a2a9a20adc6cb87e4b023c63fa026e26224c165bdbbed8"
+    },
+    {
+      "path": "server/lib/diag.js",
+      "sha256": "37c7d98babf5636f73f2492f7fe7a04ddfa58fc4fdddd8b786ae9c5eec2aed99"
+    },
+    {
+      "path": "server/lib/enrich.js",
+      "sha256": "d610c408a24aad1479438989bf2b0e0431fb390beab377fe803646c401357e67"
+    },
+    {
+      "path": "server/lib/mediaFile.js",
+      "sha256": "c1fedc0f24e2148bc98aebaf8c3683342941cba551b49cb5e633c24abb77997e"
+    },
+    {
+      "path": "server/lib/playbackHistory.js",
+      "sha256": "da9948423de35428d35e26f4a26d95e94985f68c5728f605338767f36d43e1e6"
+    },
+    {
+      "path": "server/lib/playlist.js",
+      "sha256": "712d7e39fa70ee120b6333a0b58918c7e4a526f2210a77212f85337640349bf4"
+    },
+    {
+      "path": "server/lib/probe.js",
+      "sha256": "e83645daa05771545209f8e343dbf494939cb6ad70b6faab82324172031612de"
+    },
+    {
+      "path": "server/lib/proxy.js",
+      "sha256": "71ed109ee3b2c8857d8f396c72af7b1a8ead6f10ad0fbe1cf1aa90aca8b10104"
+    },
+    {
+      "path": "server/lib/sourceStore.js",
+      "sha256": "bff022a4f88fe31a514e391c42bd6a70d50d4e4ad7e851fb2bb9a9531cd4a4e2"
+    },
+    {
+      "path": "server/lib/sources.js",
+      "sha256": "2587031c1fc926e91bb922a39b8b2edba45a6e6ac6975d73b895875c109d2bdf"
+    },
+    {
+      "path": "server/lib/validator.js",
+      "sha256": "1683c52ea0b54dbb7cdd866c4ff925451e3d428125c0563aba572dc55dbb949f"
+    },
+    {
+      "path": "server/package.json",
+      "sha256": "d88702862aefed777ca6d133d69467b47e6e26d0648ba5c8fc0aadfe9341271e"
+    },
+    {
+      "path": "server/server.js",
+      "sha256": "cebe9bb177a396731770a62e85befad84a4f9ef621a6e13a801a8d8c37ccaf56"
+    },
+    {
+      "path": "services/lib/config.js",
+      "sha256": "0738b57a70d895a9695641b313c54d5795bc83f503b6032afa37de6cc1d82820"
+    },
+    {
+      "path": "services/lib/mediaFile.js",
+      "sha256": "c1fedc0f24e2148bc98aebaf8c3683342941cba551b49cb5e633c24abb77997e"
+    },
+    {
+      "path": "services/lib/playlist.js",
+      "sha256": "712d7e39fa70ee120b6333a0b58918c7e4a526f2210a77212f85337640349bf4"
+    },
+    {
+      "path": "services/lib/sources.js",
+      "sha256": "2587031c1fc926e91bb922a39b8b2edba45a6e6ac6975d73b895875c109d2bdf"
+    },
+    {
+      "path": "services/package.json",
+      "sha256": "40472fbbe10b97ffe6c2f280b2ce1cd8f2ec75cd20e50ff875aed4eda33b981e"
+    },
+    {
+      "path": "services/service.js",
+      "sha256": "d924648d9fdb1fa5083d668f1b240e8356a47a84fe06b9f20ada7631418962d1"
+    },
+    {
+      "path": "services/services.json",
+      "sha256": "1cc5d05998bf44f038f3fd648e6ad3c7a9f9846c51518ac4c80bfeb421a2979e"
+    }
+  ]
+}

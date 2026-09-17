@@ -1,0 +1,1170 @@
+/* =====================================================
+   Layout do app — porte do desenho do nodecast-tv para a TV.
+   Regra de ouro deste arquivo: nenhum "gap" dentro de flex,
+   so dentro de grid. E nada de aspect-ratio/inset (Cr79).
+   ===================================================== */
+
+#app {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;   /* nao usar a propriedade curta (Cr87) */
+  display: -webkit-box; display: flex;
+  -webkit-box-orient: vertical; flex-direction: column;
+  padding: var(--overscan-y) var(--overscan-x);
+}
+
+/* =====================================================
+   Navbar
+   ===================================================== */
+.navbar {
+  flex: 0 0 auto;
+  height: var(--nav-h);
+  display: -webkit-box; display: flex;
+  -webkit-box-align: center; align-items: center;
+  border-bottom: 1px solid var(--color-border);
+}
+.nav-brand {
+  display: -webkit-box; display: flex;
+  -webkit-box-align: center; align-items: center;
+  margin-right: var(--space-xl);
+  flex: 0 0 auto;
+}
+.nav-logo {
+  width: 40px; height: 40px;
+  margin-right: var(--space-sm);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: #fff;
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  text-align: center;
+  line-height: 40px;
+}
+.nav-title {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.nav-title b { color: var(--color-accent); font-weight: 600; }
+.nav-version {
+  margin-left: var(--space-sm);
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent-hover);
+  font-size: 14px;
+}
+
+.nav-menu { -webkit-box-flex: 1; flex: 1 1 auto; white-space: nowrap; }
+.nav-link {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  margin-right: var(--space-xs);
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+}
+.nav-link.is-current {
+  background: var(--color-accent-dim);
+  border-color: var(--color-accent);
+  color: var(--color-text-bright);
+}
+.nav-link[data-focused="true"] {
+  background: var(--color-accent);
+  border-color: var(--color-accent-hover);
+  color: #fff;
+  outline: none;
+}
+
+.nav-state {
+  flex: 0 0 auto;
+  margin-left: auto;
+  text-align: right;
+  font-size: 15px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  max-width: 480px;
+  overflow: hidden;
+}
+.nav-status { color: var(--color-text-secondary); }
+.nav-status .dot {
+  display: inline-block; width: 12px; height: 12px;
+  border-radius: var(--radius-full);
+  background: var(--color-text-muted);
+  margin-right: var(--space-xs);
+  vertical-align: middle;
+}
+.nav-status.is-ok .dot   { background: var(--color-success); }
+.nav-status.is-warn .dot { background: var(--color-warning); }
+.nav-status.is-err .dot  { background: var(--color-error); }
+
+/* =====================================================
+   Paginas
+   ===================================================== */
+.pages {
+  -webkit-box-flex: 1; flex: 1 1 auto;
+  min-height: 0;
+  position: relative;
+  padding-top: var(--space-md);
+}
+.page {
+  position: absolute;
+  top: var(--space-md); right: 0; bottom: 0; left: 0;
+  display: none;
+}
+.page.is-active {
+  display: -webkit-box; display: flex;
+  -webkit-box-orient: vertical; flex-direction: column;
+}
+
+/* faixa de categorias, comum a live/filmes/series */
+.cat-strip {
+  position: relative;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  overflow-x: hidden;
+  margin-bottom: var(--space-sm);
+  height: 50px;
+}
+.cat {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  margin-right: var(--space-sm);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+}
+.cat.is-active {
+  background: var(--color-accent-dim);
+  border-color: var(--color-accent);
+  color: var(--color-text-primary);
+}
+.cat-strip.is-focused .cat.is-active {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* =====================================================
+   Pagina TV ao vivo: lista + palco do video
+   ===================================================== */
+.live-body {
+  -webkit-box-flex: 1; flex: 1 1 auto;
+  min-height: 0;
+  display: -webkit-box; display: flex;
+}
+.live-side {
+  width: var(--sidebar-w);
+  flex: 0 0 auto;
+  min-height: 0;
+  margin-right: var(--space-md);
+  display: -webkit-box; display: flex;
+  -webkit-box-orient: vertical; flex-direction: column;
+}
+.live-main {
+  -webkit-box-flex: 1; flex: 1 1 auto;
+  min-width: 0;
+  display: -webkit-box; display: flex;
+  -webkit-box-orient: vertical; flex-direction: column;
+}
+/* o <video> vive em #stage (position:fixed) e e posicionado por JS
+   sobre este slot. Nunca reparentamos o elemento: trocar o pai de um
+   <video> reinicia a pipeline de midia da LG. */
+.stage-slot {
+  flex: 0 0 auto;
+  width: 100%;
+  padding-top: 56.25%;              /* 16:9 sem aspect-ratio (Cr88) */
+  background: #000;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.now {
+  flex: 0 0 auto;
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.now-title { font-size: var(--fs-lg); font-weight: 600;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.now-meta {
+  font-size: var(--fs-sm); color: var(--color-text-secondary);
+  margin-top: var(--space-xs);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.now-meta .sep { color: var(--color-border-light); margin: 0 var(--space-xs); }
+.badge-engine {
+  display: inline-block;
+  padding: 2px var(--space-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  background: var(--color-accent);
+  color: #fff;
+}
+.badge-engine.is-hls { background: var(--color-warning); color: #000; }
+
+/* =====================================================
+   Lista virtualizada de canais (tambem usada para episodios)
+   ===================================================== */
+.channels {
+  -webkit-box-flex: 1; flex: 1 1 auto;
+  min-height: 0;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.channels.is-focused { border-color: var(--color-border-light); }
+.cl-viewport { height: 100%; overflow-y: auto; position: relative; }
+
+/* Nenhuma area rolavel mostra barra: na TV nao existe ponteiro para
+   arrastar, e a barra so rouba pixels e polui a tela. */
+.cl-viewport::-webkit-scrollbar,
+.grid-viewport::-webkit-scrollbar,
+.home::-webkit-scrollbar,
+.rail-track::-webkit-scrollbar,
+.set-col::-webkit-scrollbar,
+.search-results::-webkit-scrollbar {
+  width: 0; height: 0; display: none;
+}
+.cl-spacer { width: 1px; }                 /* segura a altura total */
+.cl-rows { position: absolute; top: 0; left: 0; right: 0; }
+
+.cl-row {
+  position: absolute; left: 0; right: 0;
+  height: var(--row-h);
+  display: -webkit-box; display: flex;
+  -webkit-box-align: center; align-items: center;
+  padding: 0 var(--space-md);
+  border-bottom: 1px solid var(--color-bg-primary);
+  border-left: 5px solid transparent;
+}
+.cl-row.is-selected {
+  background: var(--color-bg-hover);
+  border-left-color: var(--color-accent);
+}
+.channels.is-focused .cl-row.is-selected {
+  background: var(--color-bg-active);
+  box-shadow: inset 0 0 0 2px var(--color-accent);
+}
+
+.cl-logo {
+  width: 56px; height: 56px;
+  flex: 0 0 auto;
+  margin-right: var(--space-sm);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  text-align: center;
+}
+.cl-logo img { width: 100%; height: 100%; object-fit: contain; }
+
+.cl-body { -webkit-box-flex: 1; flex: 1 1 auto; min-width: 0; }
+.cl-name {
+  font-size: var(--fs-md);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.cl-meta {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.cl-status {
+  width: 12px; height: 12px; flex: 0 0 auto;
+  margin-left: var(--space-sm);
+  border-radius: var(--radius-full);
+  background: var(--color-text-muted);
+}
+.cl-status--ok         { background: var(--color-success); }
+.cl-status--accessible { background: #d4ad4b; }
+.cl-status--dead       { background: var(--color-error); }
+.cl-status--suspect    { background: var(--color-warning); }
+
+/* linha ainda nao carregada: esqueleto no lugar do canal */
+.cl-row--skeleton { opacity: 0.55; }
+.cl-bar {
+  height: 14px;
+  width: 58%;
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-sm);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+.cl-bar--sm { width: 32%; height: 10px; margin-top: 6px; }
+@keyframes pulse { 0%,100% { opacity: 0.5; } 50% { opacity: 0.9; } }
+
+/* =====================================================
+   Home — trilhas horizontais (o desenho da referencia)
+   ===================================================== */
+.home {
+  -webkit-box-flex: 1; flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.rail { margin-bottom: var(--space-sm); }
+.rail.is-empty { display: none; }
+.rail-head {
+  display: -webkit-box; display: flex;
+  -webkit-box-align: baseline; align-items: baseline;
+  padding-left: var(--focus-pad);
+  margin-bottom: var(--space-xs);
+}
+.rail-title {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--color-text-bright);
+}
+.rail-sub {
+  margin-left: var(--space-md);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+.rail-track {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  /* a folga cabe o anel e o leve zoom do cartao em foco */
+  padding: var(--focus-pad);
+}
+.rail-strip {
+  position: relative;
+  white-space: nowrap;
+  transition: transform var(--transition-normal);
+  will-change: transform;
+}
+
+/* cartao de poster */
+.card {
+  display: inline-block;
+  vertical-align: top;
+  width: var(--rail-card-w);
+  margin-right: var(--card-gap);
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  will-change: transform;
+}
+.card-art {
+  position: relative;
+  height: var(--rail-poster-h);
+  background: var(--color-bg-tertiary);
+  overflow: hidden;
+}
+.card-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card-art .card-fallback {
+  position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+  display: -webkit-box; display: flex;
+  -webkit-box-align: center; align-items: center;
+  -webkit-box-pack: center; justify-content: center;
+  padding: var(--space-sm);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+  white-space: normal;
+}
+.card-badge {
+  position: absolute; top: 8px; left: 8px;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid var(--glass-border);
+  font-size: 14px;
+  color: var(--color-text-bright);
+}
+.card-fav {
+  position: absolute; top: 8px; right: 10px;
+  font-size: var(--fs-md);
+  color: var(--color-warning);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+.card-progress {
+  position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 6px;
+  background: rgba(0, 0, 0, 0.55);
+}
+.card-progress > i {
+  display: block; height: 100%;
+  background: var(--color-accent);
+  box-shadow: 0 0 10px var(--color-accent);
+}
+.card-info {
+  height: var(--rail-info-h);
+  padding: var(--space-xs) var(--space-sm);
+  overflow: hidden;
+}
+.card-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text-bright);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.card-sub {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.card.is-focused {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-lg), 0 0 0 3px var(--color-accent), var(--shadow-glow);
+  transform: scale(1.04);
+}
+
+/* tile circular de canal (trilha de favoritos) */
+.tile {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(var(--tile-d) + 20px);
+  margin-right: var(--space-sm);
+  padding: var(--space-sm) var(--space-xs);
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+  will-change: transform;
+}
+.tile-art {
+  width: var(--tile-d); height: var(--tile-d);
+  margin: 0 auto var(--space-xs);
+  padding: 5px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+/* "contain" e o padding deixam o anel aparecer: com "cover" o logo cobria
+   a borda inteira e o tile virava so um circulo colorido */
+.tile-art img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.tile-art .card-fallback { position: static; height: 100%; }
+.tile-name {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.tile.is-focused {
+  background: rgba(255, 255, 255, 0.06);
+  transform: scale(1.05);
+}
+.tile.is-focused .tile-art {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 20px rgba(var(--color-accent-rgb), 0.45);
+}
+.tile.is-focused .tile-name { color: var(--color-text-bright); }
+
+.rail-empty {
+  padding: var(--space-lg);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  white-space: normal;
+}
+
+/* =====================================================
+   Busca geral
+   ===================================================== */
+.search-head {
+  flex: 0 0 auto;
+  display: -webkit-box; display: flex;
+  -webkit-box-align: center; align-items: center;
+  padding-left: var(--focus-pad);
+  margin-bottom: var(--space-md);
+}
+.search-label {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  margin-right: var(--space-md);
+}
+.search-input {
+  width: 720px;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg-tertiary);
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-full);
+  color: var(--color-text-primary);
+  font-size: var(--fs-md);
+  font-family: inherit;
+}
+.search-input.is-focused {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-glow);
+}
+.search-input::-webkit-input-placeholder { color: var(--color-text-muted); }
+.search-hint {
+  margin-left: var(--space-md);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+.search-results {
+  -webkit-box-flex: 1; flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   Grade de posters (Filmes / Series)
+   ===================================================== */
+.grid {
+  -webkit-box-flex: 1; flex: 1 1 auto;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+.grid-viewport { height: 100%; overflow-y: auto; position: relative; }
+.grid-spacer { width: 1px; }
+.grid-cells { position: absolute; top: 0; left: 0; right: 0; }
+.grid .card {
+  position: absolute;
+  width: var(--card-w);
+  margin-right: 0;
+}
+.grid .card .card-art { height: var(--poster-h); }
+.grid .card .card-info { height: var(--card-info-h); }
+.grid-empty {
+  padding: var(--space-xl);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* =====================================================
+   Ficha do titulo (filme / serie)
+   ===================================================== */
+.detail {
+  -webkit-box-flex: 1; flex: 1 1 auto;
+  min-height: 0;
+  display: -webkit-box; display: flex;
+  -webkit-box-orient: vertical; flex-direction: column;
+}
+.detail-top {
+  flex: 0 0 auto;
+  display: -webkit-box; display: flex;
+  margin-bottom: var(--space-md);
+}
+.detail-art {
+  position: relative;
+  flex: 0 0 auto;
+  width: 300px; height: 450px;
+  margin-right: var(--space-lg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+}
+.detail-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.detail-info { -webkit-box-flex: 1; flex: 1 1 auto; min-width: 0; }
+.detail-title {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  line-height: 1.12;
+  color: var(--color-text-bright);
+}
+.detail-meta {
+  margin-top: var(--space-sm);
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+}
+.detail-meta .chip {
+  display: inline-block;
+  padding: 2px var(--space-sm);
+  margin-right: var(--space-xs);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  font-size: 15px;
+}
+.detail-meta .chip--star { color: var(--color-warning); border-color: var(--color-warning); }
+.detail-plot {
+  margin-top: var(--space-md);
+  max-height: 168px;
+  overflow: hidden;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+.detail-actions { margin-top: var(--space-md); }
+.action {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  margin-right: var(--space-sm);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-light);
+  color: var(--color-text-primary);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+.action--primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent-hover);
+  color: #fff;
+}
+.action[data-focused="true"] {
+  outline: 3px solid var(--color-accent-hover);
+  outline-offset: 3px;
+  background: var(--color-accent-hover);
+  color: #fff;
+  transform: scale(1.04);
+}
+.detail-eps {
+  -webkit-box-flex: 1; flex: 1 1 auto;
+  min-height: 0;
+  display: -webkit-box; display: flex;
+  -webkit-box-orient: vertical; flex-direction: column;
+}
+.detail-eps-head {
+  flex: 0 0 auto;
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+/* =====================================================
+   Palco do video: janela e tela cheia.
+   #stage e fixed e reposicionado por JS sobre .stage-slot.
+   ===================================================== */
+.stage {
+  position: fixed;
+  z-index: 400;
+  background: #000;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.stage.is-off { display: none; }
+.stage.is-full {
+  top: 0 !important; left: 0 !important;
+  width: 100% !important; height: 100% !important;
+  border: 0; border-radius: 0;
+  z-index: 800;
+}
+.stage video {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #000;
+}
+
+/* overlay de estado — nunca desenhe sobre o video contando com canvas:
+   o video vive num plano de hardware, o canvas so devolve preto */
+.stage-overlay {
+  position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+  display: -webkit-box; display: flex;
+  -webkit-box-align: center; align-items: center;
+  -webkit-box-pack: center; justify-content: center;
+  background: rgba(10, 10, 15, 0.72);
+  font-size: var(--fs-lg);
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: var(--space-md);
+}
+.stage-overlay.hidden { display: none !important; }
+
+.spinner {
+  display: inline-block;
+  width: 44px; height: 44px;
+  border: 4px solid var(--color-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  margin-right: var(--space-sm);
+  vertical-align: middle;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* barra de informacao da tela cheia */
+.watch-bar {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: var(--space-2xl) var(--overscan-x) var(--overscan-y);
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.88) 62%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.88) 62%);
+  transition: opacity var(--transition-normal);
+}
+.watch-bar.hidden { display: none !important; }
+.stage:not(.is-full) .watch-bar { display: none; }
+.watch-title {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  color: var(--color-text-bright);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.watch-sub {
+  margin-top: var(--space-xs);
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+}
+.watch-seek {
+  margin-top: var(--space-sm);
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+.watch-seek > i {
+  display: block; height: 100%;
+  background: var(--color-accent);
+}
+.watch-seek.hidden { display: none !important; }
+.watch-seek.is-focused { box-shadow: 0 0 0 2px var(--color-accent-hover); }
+.watch-seek.is-scrubbing > i { background: var(--color-accent-hover); }
+
+.watch-times {
+  display: -webkit-box; display: flex;
+  -webkit-box-pack: justify; justify-content: space-between;
+  margin-top: 6px;
+  font-size: var(--fs-xs);
+  color: var(--color-text-secondary);
+}
+.watch-controls { margin-top: var(--space-sm); }
+.wc-btn {
+  font: inherit;
+  display: inline-block;
+  min-width: 68px;
+  padding: var(--space-xs) var(--space-md);
+  margin-right: var(--space-sm);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--glass-border);
+  color: var(--color-text-primary);
+  font-size: var(--fs-sm);
+}
+.wc-btn[data-focused="true"] {
+  background: var(--color-accent);
+  border-color: var(--color-accent-hover);
+  color: #fff;
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* painel de proximo episodio */
+.next-ep {
+  position: absolute; right: var(--overscan-x); bottom: 180px;
+  width: 620px;
+  padding: var(--space-md);
+  background: rgba(12, 12, 20, 0.94);
+  border: 1px solid var(--color-border-light);
+  border-left: 5px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 20;
+}
+.next-ep.hidden { display: none !important; }
+.next-ep-label {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent-hover);
+}
+.next-ep-title {
+  margin-top: 4px;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--color-text-bright);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.next-ep-hint {
+  margin-top: var(--space-xs);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+.next-ep-go {
+  font: inherit;
+  display: inline-block;
+  margin-top: var(--space-sm);
+  padding: var(--space-xs) var(--space-lg);
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent-hover);
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+.next-ep-go[data-focused="true"] {
+  background: var(--color-accent-hover);
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* =====================================================
+   Dialogo de retomada
+   ===================================================== */
+.resume-choice {
+  position: fixed;
+  top: 32%; left: 26%; width: 48%;
+  padding: var(--space-lg);
+  background: var(--color-surface-hi);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  z-index: 1000;
+  font-size: var(--fs-lg);
+  box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.75), var(--shadow-lg);
+}
+.resume-choice.hidden { display: none !important; }
+.resume-option {
+  font: inherit;
+  margin-top: var(--space-md);
+  margin-right: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  color: var(--color-text-primary);
+  background: var(--color-bg-tertiary);
+  border: 3px solid transparent;
+  border-radius: var(--radius-md);
+  font-size: var(--fs-md);
+}
+.resume-option.is-focused {
+  border-color: var(--color-accent-hover);
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* =====================================================
+   Rodape de teclas
+   ===================================================== */
+.keybar {
+  flex: 0 0 auto;
+  height: var(--keybar-h);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.keybar .k {
+  font: inherit;
+  display: inline-block;
+  min-width: 28px;
+  padding: 2px 10px;
+  margin-right: var(--space-xs);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+.keybar .k--red    { background: #7f1d1d; border-color: #991b1b; color: #fecaca; }
+.keybar .k--green  { background: #14532d; border-color: #166534; color: #bbf7d0; }
+.keybar .k--yellow { background: #713f12; border-color: #854d0e; color: #fde68a; }
+.keybar .k--blue   { background: #1e3a8a; border-color: #1d4ed8; color: #bfdbfe; }
+.keybar .grp { margin-right: var(--space-lg); display: inline-block; }
+
+/* =====================================================
+   Assistente de primeiro inicio (tela de boas-vindas)
+   ===================================================== */
+.setup {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: var(--color-bg-primary);
+  z-index: 960;
+  display: -webkit-box; display: flex;
+  -webkit-box-align: center; align-items: center;
+  -webkit-box-pack: center; justify-content: center;
+  padding: var(--overscan-y) var(--overscan-x);
+}
+.setup.hidden { display: none !important; }
+
+.setup-box {
+  width: 1040px;
+  max-height: 100%;
+  padding: var(--space-xl);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow-y: auto;
+}
+.setup-box::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+.setup-head {
+  display: -webkit-box; display: flex;
+  -webkit-box-align: center; align-items: center;
+  margin-bottom: var(--space-lg);
+}
+.setup-logo {
+  flex: 0 0 auto;
+  width: 64px; height: 64px;
+  margin-right: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: #fff;
+  font-size: var(--fs-xl);
+  text-align: center;
+  line-height: 64px;
+}
+.setup-title {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-text-bright);
+}
+.setup-sub {
+  margin-top: 4px;
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+}
+
+.setup-row {
+  margin-bottom: var(--space-sm);
+  padding: var(--space-xs);
+  border-radius: var(--radius-sm);
+}
+.setup-row label {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+.setup-row input {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg-tertiary);
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-size: var(--fs-md);
+  font-family: Consolas, "Courier New", monospace;
+}
+.setup-row[data-focused="true"] { background: var(--color-bg-hover); }
+.setup-row[data-focused="true"] input {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.setup-btn {
+  padding: var(--space-sm) var(--space-lg);
+  margin-bottom: var(--space-sm);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-md);
+}
+.setup-btn--primary {
+  background: var(--color-accent-dim);
+  border-color: var(--color-accent);
+  color: var(--color-text-bright);
+}
+.setup-btn[data-focused="true"] {
+  background: var(--color-accent);
+  border-color: var(--color-accent-hover);
+  color: #fff;
+  outline: 3px solid var(--color-accent-hover);
+  outline-offset: 2px;
+}
+
+.setup-text {
+  margin: var(--space-sm) 0 var(--space-md);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+.setup-text--big {
+  font-size: var(--fs-lg);
+  color: var(--color-text-bright);
+}
+.setup-text--wait { color: var(--color-warning); }
+
+/* Barra de progresso sem transicao de largura de proposito: animar
+   width custa layout, e esta TV e ruim justamente nisso. O valor pula a
+   cada evento de progresso, que ja chega de fracao em fracao de segundo. */
+.setup-bar {
+  height: 16px;
+  margin-top: var(--space-md);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.setup-bar > i {
+  display: block;
+  height: 100%;
+  background: var(--color-accent);
+  box-shadow: 0 0 16px var(--color-accent);
+}
+.setup-phase {
+  margin-top: var(--space-xs);
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+}
+
+.setup-msg {
+  margin-top: var(--space-md);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  min-height: 22px;
+}
+.setup-msg.ok   { background: rgba(16, 185, 129, 0.15); color: var(--color-success); }
+.setup-msg.err  { background: rgba(239, 68, 68, 0.15);  color: var(--color-error); }
+.setup-msg.wait { background: rgba(245, 158, 11, 0.15); color: var(--color-warning); }
+
+.setup-hint {
+  margin-top: var(--space-md);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+/* =====================================================
+   HUD de log (tecla AMARELA)
+   Fica por cima de tudo. Fonte pequena de proposito:
+   aqui a densidade importa mais que a legibilidade a 3m.
+   ===================================================== */
+.loghud {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: 46%;
+  background: rgba(4, 6, 10, 0.94);
+  border-left: 1px solid var(--color-border);
+  padding: var(--space-md);
+  z-index: 900;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 15px;
+  line-height: 1.42;
+  overflow: hidden;
+}
+.loghud.hidden { display: none !important; }
+
+.loghud-stats {
+  padding-bottom: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+.loghud-stat {
+  display: inline-block;
+  margin-right: var(--space-md);
+  color: var(--color-text-secondary);
+  font-size: 16px;
+}
+.loghud-stat b {
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-right: 6px;
+}
+
+.loghud-lines { color: var(--color-text-muted); }
+.loghud-lines > div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.loghud-lines .lv-info  { color: #8b95a5; }
+.loghud-lines .lv-warn  { color: var(--color-warning); }
+.loghud-lines .lv-error { color: var(--color-error); }
+
+/* =====================================================
+   Tela de configuracao (tecla AZUL)
+   ===================================================== */
+.settings {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(6, 8, 13, 0.97);
+  z-index: 950;
+  padding: var(--overscan-y) var(--overscan-x);
+  overflow: hidden;
+}
+.settings.hidden { display: none !important; }
+
+.set-head { border-bottom: 2px solid var(--color-border); padding-bottom: var(--space-sm); }
+.set-title { font-size: var(--fs-xl); font-weight: 600; }
+.set-hint { font-size: var(--fs-xs); color: var(--color-text-muted); margin-top: 4px; }
+
+.set-body {
+  display: -webkit-box; display: flex;
+  margin-top: var(--space-md);
+  height: calc(100% - 120px);
+}
+.set-col {
+  -webkit-box-flex: 1; flex: 1 1 0; min-width: 0;
+  margin-right: var(--space-lg);
+  overflow-y: auto;
+}
+.set-col:last-child { margin-right: 0; }
+
+.set-col h3 {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: var(--space-md) 0 var(--space-sm);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--color-border);
+}
+.set-col h3:first-child { margin-top: 0; }
+
+.set-row { margin-bottom: var(--space-sm); padding: 4px; border-radius: var(--radius-sm); }
+.set-row label {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  margin-bottom: 3px;
+}
+.set-row input {
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-size: var(--fs-sm);
+  font-family: Consolas, "Courier New", monospace;
+}
+.set-row[data-focused="true"] { background: var(--color-bg-hover); }
+.set-row[data-focused="true"] input { border-color: var(--color-accent); }
+
+.set-btn {
+  padding: var(--space-xs) var(--space-md);
+  margin-bottom: var(--space-sm);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  text-align: center;
+}
+.set-btn.primary { background: var(--color-accent-dim); border-color: var(--color-accent); }
+.set-btn[data-focused="true"] {
+  background: var(--color-accent);
+  border-color: var(--color-accent-hover);
+  color: #fff;
+}
+
+.set-src {
+  padding: var(--space-xs) var(--space-sm);
+  margin-bottom: var(--space-xs);
+  border-left: 4px solid transparent;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-secondary);
+}
+.set-src.is-active { border-left-color: var(--color-success); }
+.set-src[data-focused="true"] { background: var(--color-bg-hover); border-left-color: var(--color-accent); }
+.set-src-name { font-size: var(--fs-sm); }
+.set-src-meta { font-size: var(--fs-xs); color: var(--color-text-muted); }
+
+.set-info {
+  display: -webkit-box; display: flex;
+  font-size: var(--fs-xs);
+  line-height: 1.7;
+  border-bottom: 1px solid var(--color-bg-secondary);
+}
+.set-info span { -webkit-box-flex: 1; flex: 1 1 auto; color: var(--color-text-muted); }
+.set-info b { flex: 0 0 auto; color: var(--color-text-primary); font-weight: 600; }
+
+.set-msg {
+  margin-top: var(--space-md);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  min-height: 22px;
+}
+.set-msg.ok   { background: rgba(16, 185, 129, 0.15); color: var(--color-success); }
+.set-msg.err  { background: rgba(239, 68, 68, 0.15);  color: var(--color-error); }
+.set-msg.wait { background: rgba(245, 158, 11, 0.15); color: var(--color-warning); }

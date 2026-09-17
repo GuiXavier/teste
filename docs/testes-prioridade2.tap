@@ -1,0 +1,317 @@
+TAP version 13
+# (node:18696) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+# (Use `node --trace-deprecation ...` to show where the warning was created)
+# Subtest: troca de fonte publica tudo junto; todas as falhas preservam estado e fonte persistida
+ok 1 - troca de fonte publica tudo junto; todas as falhas preservam estado e fonte persistida
+  ---
+  duration_ms: 338.7492
+  type: 'test'
+  ...
+# Subtest: falha ao persistir ativacao nao publica candidato
+ok 2 - falha ao persistir ativacao nao publica candidato
+  ---
+  duration_ms: 141.9381
+  type: 'test'
+  ...
+# Subtest: HTTP exige fonte; inclui identidade e nao filtra mortos durante sync
+ok 3 - HTTP exige fonte; inclui identidade e nao filtra mortos durante sync
+  ---
+  duration_ms: 125.1644
+  type: 'test'
+  ...
+# Subtest: categoria com falha responde erro; callback antigo nao contamina fonte nova
+ok 4 - categoria com falha responde erro; callback antigo nao contamina fonte nova
+  ---
+  duration_ms: 145.0939
+  type: 'test'
+  ...
+# Subtest: episodios de callback antigo nao entram no cache da nova fonte
+ok 5 - episodios de callback antigo nao entram no cache da nova fonte
+  ---
+  duration_ms: 139.7085
+  type: 'test'
+  ...
+# Subtest: ativacoes concorrentes sao serializadas e cada resposta descreve sua geracao
+ok 6 - ativacoes concorrentes sao serializadas e cada resposta descreve sua geracao
+  ---
+  duration_ms: 220.5729
+  type: 'test'
+  ...
+# Subtest: IDs entregues a interface incluem fonte e tipo; play antigo nao abre item da nova fonte
+ok 7 - IDs entregues a interface incluem fonte e tipo; play antigo nao abre item da nova fonte
+  ---
+  duration_ms: 139.1558
+  type: 'test'
+  ...
+# Subtest: paginas incompletas, vazias, sem total, offset errado, mudanca de snapshot e erro preservam todo o catalogo
+    # Subtest: curta
+    ok 1 - curta
+      ---
+      duration_ms: 113.1458
+      type: 'test'
+      ...
+    # Subtest: vazia
+    ok 2 - vazia
+      ---
+      duration_ms: 1002.5936
+      type: 'test'
+      ...
+    # Subtest: semTotal
+    ok 3 - semTotal
+      ---
+      duration_ms: 64.4045
+      type: 'test'
+      ...
+    # Subtest: offset
+    ok 4 - offset
+      ---
+      duration_ms: 60.0292
+      type: 'test'
+      ...
+    # Subtest: totalMuda
+    ok 5 - totalMuda
+      ---
+      duration_ms: 912.1171
+      type: 'test'
+      ...
+    # Subtest: snapshotMuda
+    ok 6 - snapshotMuda
+      ---
+      duration_ms: 868.866
+      type: 'test'
+      ...
+    # Subtest: idInvalido
+    ok 7 - idInvalido
+      ---
+      duration_ms: 64.0042
+      type: 'test'
+      ...
+    # Subtest: duplicado
+    ok 8 - duplicado
+      ---
+      duration_ms: 63.7637
+      type: 'test'
+      ...
+    # Subtest: rede
+    ok 9 - rede
+      ---
+      duration_ms: 849.1139
+      type: 'test'
+      ...
+    # Subtest: timeout
+    ok 10 - timeout
+      ---
+      duration_ms: 69.4643
+      type: 'test'
+      ...
+    1..10
+ok 8 - paginas incompletas, vazias, sem total, offset errado, mudanca de snapshot e erro preservam todo o catalogo
+  ---
+  duration_ms: 4073.4317
+  type: 'test'
+  ...
+# Subtest: publicacao completa remove apenas os ausentes e informa contagem real, inclusive vazio com total explicito
+ok 9 - publicacao completa remove apenas os ausentes e informa contagem real, inclusive vazio com total explicito
+  ---
+  duration_ms: 61.0254
+  type: 'test'
+  ...
+# Subtest: falha de categorias depois do live nao publica dados nem muda lastSuccess
+ok 10 - falha de categorias depois do live nao publica dados nem muda lastSuccess
+  ---
+  duration_ms: 78.7602
+  type: 'test'
+  ...
+# Subtest: colisoes de ID entre fontes/tipos e episodios da mesma serie sao isoladas
+ok 11 - colisoes de ID entre fontes/tipos e episodios da mesma serie sao isoladas
+  ---
+  duration_ms: 96.3968
+  type: 'test'
+  ...
+# Subtest: categoria expirada substitui itens, falhas preservam cache e sync geral preserva timestamp
+ok 12 - categoria expirada substitui itens, falhas preservam cache e sync geral preserva timestamp
+  ---
+  duration_ms: 139.2554
+  type: 'test'
+  ...
+# Subtest: duas sincronizacoes da mesma fonte sao serializadas
+ok 13 - duas sincronizacoes da mesma fonte sao serializadas
+  ---
+  duration_ms: 142.9247
+  type: 'test'
+  ...
+# Subtest: abort real de transacao reverte inclusoes, poda, categorias e marcador
+ok 14 - abort real de transacao reverte inclusoes, poda, categorias e marcador
+  ---
+  duration_ms: 76.9116
+  type: 'test'
+  ...
+# Subtest: migra banco v1 sem apagar favoritos/historico e converte referencia de serie
+ok 15 - migra banco v1 sem apagar favoritos/historico e converte referencia de serie
+  ---
+  duration_ms: 7.3057
+  type: 'test'
+  ...
+# Subtest: HTTP rejeita fonte diferente e mudanca de geracao
+ok 16 - HTTP rejeita fonte diferente e mudanca de geracao
+  ---
+  duration_ms: 3.5962
+  type: 'test'
+  ...
+# Subtest: SHA-256 dos IDs M3U legados equivale ao backend e nao expoe URL
+ok 17 - SHA-256 dos IDs M3U legados equivale ao backend e nao expoe URL
+  ---
+  duration_ms: 7.8099
+  type: 'test'
+  ...
+# Subtest: podar serie removida tambem remove episodios e preserva outras fontes
+ok 18 - podar serie removida tambem remove episodios e preserva outras fontes
+  ---
+  duration_ms: 109.3763
+  type: 'test'
+  ...
+# Subtest: falha no staging nao altera dados ativos e informa erro uma unica vez
+ok 19 - falha no staging nao altera dados ativos e informa erro uma unica vez
+  ---
+  duration_ms: 64.8754
+  type: 'test'
+  ...
+# Subtest: codigo proprio do app e ES5; servico e ES2017; backend tem sintaxe valida
+ok 20 - codigo proprio do app e ES5; servico e ES2017; backend tem sintaxe valida
+  ---
+  duration_ms: 120.5472
+  type: 'test'
+  ...
+# Subtest: Catalog preserva fonte ativa quando sync falha e nao reativa fonte de solicitacao antiga
+ok 21 - Catalog preserva fonte ativa quando sync falha e nao reativa fonte de solicitacao antiga
+  ---
+  duration_ms: 4.0642
+  type: 'test'
+  ...
+# Subtest: STOP cancela fallback pendente; eventos antigos e retry HLS nao afetam outro canal
+ok 22 - STOP cancela fallback pendente; eventos antigos e retry HLS nao afetam outro canal
+  ---
+  duration_ms: 6.5945
+  type: 'test'
+  ...
+# Subtest: fallback exige disponibilidade atual e nativo com headers usa URL do proxy
+ok 23 - fallback exige disponibilidade atual e nativo com headers usa URL do proxy
+  ---
+  duration_ms: 2.0176
+  type: 'test'
+  ...
+# Subtest: A lento e B rapido mantem B; STOP antes de 400 ms impede play e callback antigo
+ok 24 - A lento e B rapido mantem B; STOP antes de 400 ms impede play e callback antigo
+  ---
+  duration_ms: 6.1302
+  type: 'test'
+  ...
+# Subtest: categorias em ordem inversa e paginas antigas nao substituem lista atual
+ok 25 - categorias em ordem inversa e paginas antigas nao substituem lista atual
+  ---
+  duration_ms: 5.4863
+  type: 'test'
+  ...
+# Subtest: API distingue endereco de disponibilidade, coalesce sondas, expira e isola troca de PC
+ok 26 - API distingue endereco de disponibilidade, coalesce sondas, expira e isola troca de PC
+  ---
+  duration_ms: 2.8991
+  type: 'test'
+  ...
+# Subtest: cadastro local, migracao e reinicio preservam fonte, lives, VOD e episodios sem PC
+ok 27 - cadastro local, migracao e reinicio preservam fonte, lives, VOD e episodios sem PC
+  ---
+  duration_ms: 113.3848
+  type: 'test'
+  ...
+# (node:22252) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+# (Use `node --trace-deprecation ...` to show where the warning was created)
+# Subtest: teste local negocia TS e cabecalhos; alteracao de credenciais nao reutiliza catalogo antigo
+ok 28 - teste local negocia TS e cabecalhos; alteracao de credenciais nao reutiliza catalogo antigo
+  ---
+  duration_ms: 4.9157
+  type: 'test'
+  ...
+# Subtest: Luna falha: tenta operacao HTTP inteira so com PC disponivel
+ok 29 - Luna falha: tenta operacao HTTP inteira so com PC disponivel
+  ---
+  duration_ms: 3.2916
+  type: 'test'
+  ...
+# Subtest: sonda MP4 interpreta atoms, ignora moov em payload e nao promete codec
+ok 30 - sonda MP4 interpreta atoms, ignora moov em payload e nao promete codec
+  ---
+  duration_ms: 12.995
+  type: 'test'
+  ...
+# Subtest: amostra limita chunk enorme mesmo sem Range; download completo excedente falha; 404 rejeitado
+ok 31 - amostra limita chunk enorme mesmo sem Range; download completo excedente falha; 404 rejeitado
+  ---
+  duration_ms: 17.4236
+  type: 'test'
+  ...
+# Subtest: Settings conserva rascunho e foco enquanto lista de fontes chega atrasada
+ok 32 - Settings conserva rascunho e foco enquanto lista de fontes chega atrasada
+  ---
+  duration_ms: 4.3968
+  type: 'test'
+  ...
+# Subtest: boot abre banco e catalogo antes de consultar PC indisponivel
+ok 33 - boot abre banco e catalogo antes de consultar PC indisponivel
+  ---
+  duration_ms: 3.0537
+  type: 'test'
+  ...
+# Subtest: cabecalhos obrigatorios bloqueiam caminho direto e escolhem proxy adequado quando online
+ok 34 - cabecalhos obrigatorios bloqueiam caminho direto e escolhem proxy adequado quando online
+  ---
+  duration_ms: 5.5549
+  type: 'test'
+  ...
+# Subtest: servico real negocia provedor somente TS, conserva headers e renova autenticacao no reinicio
+ok 35 - servico real negocia provedor somente TS, conserva headers e renova autenticacao no reinicio
+  ---
+  duration_ms: 13.9623
+  type: 'test'
+  ...
+# Subtest: proxy de arquivo repassa Range e interrompe upstream ao fechar player
+ok 36 - proxy de arquivo repassa Range e interrompe upstream ao fechar player
+  ---
+  duration_ms: 3.6276
+  type: 'test'
+  ...
+# (node:19956) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+# (Use `node --trace-deprecation ...` to show where the warning was created)
+# Subtest: M3U A -> B -> A usa caches diferentes e ignora cache legado sem origem
+ok 37 - M3U A -> B -> A usa caches diferentes e ignora cache legado sem origem
+  ---
+  duration_ms: 33.5616
+  type: 'test'
+  ...
+# Subtest: cache vencido so faz fallback para mesma origem; erro no rename preserva arquivo antigo
+ok 38 - cache vencido so faz fallback para mesma origem; erro no rename preserva arquivo antigo
+  ---
+  duration_ms: 18.7106
+  type: 'test'
+  ...
+# Subtest: identidade M3U independe de nome/ordem e mantem URLs distintas
+ok 39 - identidade M3U independe de nome/ordem e mantem URLs distintas
+  ---
+  duration_ms: 4.5324
+  type: 'test'
+  ...
+# Subtest: Luna separa cache por senha, pagina categorias e identifica snapshot/fonte
+ok 40 - Luna separa cache por senha, pagina categorias e identifica snapshot/fonte
+  ---
+  duration_ms: 10.5876
+  type: 'test'
+  ...
+1..40
+# tests 50
+# suites 0
+# pass 50
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5115.3558

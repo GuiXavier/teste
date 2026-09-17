@@ -1,0 +1,129 @@
+{
+  "generatedAt": "2026-09-12T17:20:43.485Z",
+  "node": "v24.20.0",
+  "appVersion": "0.1.2",
+  "build": "0912-p2",
+  "exitCode": 0,
+  "tests": 50,
+  "passed": 50,
+  "failed": 0,
+  "validation": "Fixtures e transportes simulados; sem execucao no aparelho ou provedor real",
+  "testFiles": [
+    "tests/backend-integrity.test.cjs",
+    "tests/catalog-integrity.test.cjs",
+    "tests/compatibility.test.cjs",
+    "tests/playback-autonomy.test.cjs",
+    "tests/transport-integrity.test.cjs"
+  ],
+  "changedSincePriority1": [
+    {
+      "path": "app/appinfo.json",
+      "before": "3f5f7ee9c78c61531e0dddbadc4096cf847236a0df188167a417325ccc26abe1",
+      "after": "bc29b5a3d0e5c553e12761eb2157f0478ea1ed051ee3b73954fa8af788a8f2d4"
+    },
+    {
+      "path": "app/js/api.js",
+      "before": "dc1a8ce47148614c3f6057f5b19d27b09dc2e426009d46281d618f718bd95626",
+      "after": "d92b4d7993957b9a651375942def08b26de8b87379793ba58f0524ceffcf3a0f"
+    },
+    {
+      "path": "app/js/app.js",
+      "before": "ec6f284131786e21b67a46a3bbbb7492a09e352e63575a10b0420b461d31431f",
+      "after": "94705888207cb24087d196b4ad70f473a0cac0eb34de5262dae846e96d0379a9"
+    },
+    {
+      "path": "app/js/catalog.js",
+      "before": "63d8cd261b4e07c64b94bef908591d4139c9e851c85c00755ad80d328b4351cd",
+      "after": "3cae1615b137854ff1008b15865052e45763f99c35746d337ed05544fbd08281"
+    },
+    {
+      "path": "app/js/platform/db.js",
+      "before": "346a512bf621c98e221818b1e82d7d8a9963506db6feec8d7dd0f22bdcb16150",
+      "after": "9466e6faaebc902d0e888908d6b18bb3bf8afaf0c38e671305a071ad51e4d67b"
+    },
+    {
+      "path": "app/js/platform/sync.js",
+      "before": "9b838d2043cb936268449f38473c5c33297d891ae7b06549c7d682bbbb05de6c",
+      "after": "85e9f693671483c9cd419b14f6c0c4271c42bf58c856ba4ae6fd81833beb6415"
+    },
+    {
+      "path": "app/js/player/Player.js",
+      "before": "25d8ffe6074bed48645bbd5eecacbfd2e5a0c5cbd8407117cfaa2cdb7d1a617e",
+      "after": "b3cc76e4a4eea8b25dd0c1b4e710d4b96a96a83417208e0d28bcf4c08e35abca"
+    },
+    {
+      "path": "app/js/ui/ChannelList.js",
+      "before": "2876c5f206aaa59a70950311154f64863f3bf742966e0c0299154ec37c1c6834",
+      "after": "c84ce897fb16e5efee05d2110ab025e97ef0c21ec10c582cf2c460c1a93f7147"
+    },
+    {
+      "path": "app/js/ui/Settings.js",
+      "before": "7b69bea7cf3a82598aa14242405e43b8a64ff4245cf449765d9b3eedbe96fb8a",
+      "after": "47b75aacddac878fbf94cca81376636f9069b11df4ea9010469c99fb17bde1ed"
+    },
+    {
+      "path": "server/lib/playlist.js",
+      "before": "e184f7b5fe97079469c5112f156c6953db1734420a82e04f36a2b8d7727c9874",
+      "after": "712d7e39fa70ee120b6333a0b58918c7e4a526f2210a77212f85337640349bf4"
+    },
+    {
+      "path": "server/lib/probe.js",
+      "before": "6a6d875890e5e79f32a8a098e705bc96e4cf7c91cae4cadfeb4529e389f4465c",
+      "after": "e83645daa05771545209f8e343dbf494939cb6ad70b6faab82324172031612de"
+    },
+    {
+      "path": "server/lib/proxy.js",
+      "before": "af0f45e7b9901717b3f0b5b80331c065d027619ffe3b652bb8d74b07853c4591",
+      "after": "71ed109ee3b2c8857d8f396c72af7b1a8ead6f10ad0fbe1cf1aa90aca8b10104"
+    },
+    {
+      "path": "server/lib/sources.js",
+      "before": "22e7187489f851bb19817b50f1fdcca36aecce901e412ec3fd82a42c32191319",
+      "after": "2587031c1fc926e91bb922a39b8b2edba45a6e6ac6975d73b895875c109d2bdf"
+    },
+    {
+      "path": "server/lib/sourceStore.js",
+      "before": "5f3c23bab360d79403edc3908b2a63c501ca3a42bfdaae143e8f16ca8ea2b0d3",
+      "after": "bff022a4f88fe31a514e391c42bd6a70d50d4e4ad7e851fb2bb9a9531cd4a4e2"
+    },
+    {
+      "path": "server/server.js",
+      "before": "c9408dc78ff0464f1f1cfa36fe6efaa363e8c90a67a3fc737b9ba6b5052016f1",
+      "after": "09e4b83fb248597a86f3fd3f63381934fe2daf53afc730992818994b901319dd"
+    },
+    {
+      "path": "services/lib/playlist.js",
+      "before": "e184f7b5fe97079469c5112f156c6953db1734420a82e04f36a2b8d7727c9874",
+      "after": "712d7e39fa70ee120b6333a0b58918c7e4a526f2210a77212f85337640349bf4"
+    },
+    {
+      "path": "services/lib/sources.js",
+      "before": "22e7187489f851bb19817b50f1fdcca36aecce901e412ec3fd82a42c32191319",
+      "after": "2587031c1fc926e91bb922a39b8b2edba45a6e6ac6975d73b895875c109d2bdf"
+    },
+    {
+      "path": "services/package.json",
+      "before": "1a46228908ae1c798f5e3a196915e5d66b5dc3f2499577b97307f15d35e56b37",
+      "after": "7b91c308b47294cd0d51e4eee9952ce520a0f46797166022344c400cfb84bcab"
+    },
+    {
+      "path": "services/service.js",
+      "before": "80b4c6d1b5ac23ace25c71d8482dcea2c70a75594e50cb5b07ba7aae1edf5bf2",
+      "after": "dd9a0b4b4f680d14158140903d99e70c2763af4caee777e64cfb108a3838799a"
+    }
+  ],
+  "addedCodeFiles": [
+    {
+      "path": "server/lib/mediaFile.js",
+      "sha256": "c1fedc0f24e2148bc98aebaf8c3683342941cba551b49cb5e633c24abb77997e"
+    },
+    {
+      "path": "services/lib/mediaFile.js",
+      "sha256": "c1fedc0f24e2148bc98aebaf8c3683342941cba551b49cb5e633c24abb77997e"
+    },
+    {
+      "path": "tests/playback-autonomy.test.cjs",
+      "sha256": "945c10f810de5f6aa1ccbe38da3ad4fe53460a87c6e4e8f6486edb2f59ddc202"
+    }
+  ]
+}
