@@ -1,6 +1,0 @@
-{
-  "name": "com.iptv.tvapp.service",
-  "version": "0.1.8",
-  "description": "Backend embutido do app IPTV - roda no Node.js da propria TV",
-  "main": "service.js"
-}
